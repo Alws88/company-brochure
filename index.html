@@ -274,64 +274,64 @@
             .header {
                 padding: 30px 20px;
             }
-            
+
             .main-title {
                 font-size: 28px;
             }
-            
+
             .subtitle {
                 font-size: 15px;
                 letter-spacing: 2px;
             }
-            
+
             .tagline {
                 gap: 8px;
             }
-            
+
             .tag-item {
                 font-size: 12px;
                 padding: 6px 12px;
             }
-            
+
             .main-content {
                 padding: 20px 15px;
             }
-            
+
             .dual-section {
                 gap: 12px;
             }
-            
+
             .service-card {
                 padding: 15px;
                 border-radius: 12px;
             }
-            
+
             .card-header {
                 margin-bottom: 15px;
                 padding-bottom: 12px;
             }
-            
+
             .card-icon {
                 width: 36px;
                 height: 36px;
                 font-size: 18px;
             }
-            
+
             .card-title {
                 font-size: 15px;
             }
-            
+
             .card-subtitle {
                 font-size: 11px;
             }
-            
+
             .service-item {
                 padding: 10px;
                 font-size: 12px;
                 gap: 8px;
                 border-radius: 8px;
             }
-            
+
             .bullet {
                 width: 5px;
                 height: 5px;
@@ -343,16 +343,16 @@
             .main-title {
                 font-size: 24px;
             }
-            
+
             .card-title {
                 font-size: 14px;
             }
-            
+
             .service-item {
                 padding: 8px;
                 font-size: 11px;
             }
-            
+
             .card-icon {
                 width: 32px;
                 height: 32px;
@@ -431,27 +431,27 @@
                 padding: 30px 20px;
                 border-radius: 16px;
             }
-            
+
             .process-title {
                 font-size: 20px;
                 margin-bottom: 25px;
             }
-            
+
             .process-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
             }
-            
+
             .process-icon-wrap {
                 width: 60px;
                 height: 60px;
                 font-size: 28px;
             }
-            
+
             .process-item-title {
                 font-size: 15px;
             }
-            
+
             .process-item-desc {
                 font-size: 11px;
             }
@@ -531,32 +531,40 @@
             .section-title {
                 font-size: 20px;
             }
-            
+
             .advantages {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
             }
-            
+
             .adv-item {
                 padding: 20px 10px;
             }
-            
+
             .adv-icon {
                 width: 44px;
                 height: 44px;
                 font-size: 22px;
             }
-            
+
             .adv-title {
                 font-size: 14px;
             }
-            
+
             .adv-desc {
                 font-size: 11px;
             }
         }
 
         /* 详情内容区域 */
+        .detail-container {
+            display: none;
+        }
+
+        .detail-container.active {
+            display: block;
+        }
+
         .detail-section {
             padding: 40px 30px;
             border-top: 8px solid #f0f0f0;
@@ -625,6 +633,10 @@
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+
+        .detail-content h3.orange {
+            color: #FF6B35;
         }
 
         .detail-content h3::before {
@@ -705,17 +717,17 @@
             .detail-section {
                 padding: 30px 20px;
             }
-            
+
             .detail-icon {
                 width: 48px;
                 height: 48px;
                 font-size: 22px;
             }
-            
+
             .detail-title-group h2 {
                 font-size: 22px;
             }
-            
+
             .detail-content h3 {
                 font-size: 18px;
             }
@@ -806,33 +818,157 @@
             .footer {
                 padding: 40px 20px;
             }
-            
+
             .cta-title {
                 font-size: 22px;
             }
-            
+
             .contact-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 12px;
             }
-            
+
             .contact-card {
                 padding: 15px;
                 flex-direction: column;
                 text-align: center;
                 gap: 10px;
             }
-            
+
             .contact-icon {
                 width: 40px;
                 height: 40px;
             }
-            
+
             .contact-value {
                 font-size: 13px;
             }
         }
-    </style>
+    
+        /* 顶部固定返回导航栏 */
+        .detail-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: none;
+        }
+
+        .detail-nav.active {
+            display: flex;
+        }
+
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.15);
+            transition: all 0.3s;
+        }
+
+        .nav-back:hover, .nav-back:active {
+            background: rgba(255,255,255,0.25);
+        }
+
+        .nav-title {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            flex: 1;
+            text-align: center;
+            margin: 0 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .nav-placeholder {
+            width: 60px;
+        }
+
+        /* 详情内容区域添加顶部padding给导航栏留空间 */
+        .detail-section {
+            padding-top: 80px;
+        }
+
+        @media (max-width: 768px) {
+            .detail-nav {
+                padding: 10px 15px;
+            }
+
+            .nav-back {
+                font-size: 14px;
+                padding: 6px 10px;
+            }
+
+            .nav-back i {
+                font-size: 14px;
+            }
+
+            .nav-title {
+                font-size: 16px;
+            }
+
+            .detail-section {
+                padding-top: 70px;
+            }
+        }
+
+        /* 右侧悬浮返回按钮 */
+        .float-back-btn {
+            position: fixed;
+            right: 20px;
+            bottom: 100px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .float-back-btn.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .float-back-btn:hover, .float-back-btn:active {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        @media (max-width: 768px) {
+            .float-back-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+                right: 15px;
+                bottom: 80px;
+            }
+        }
+</style>
 <base target="_blank">
 </head>
 <body>
@@ -863,7 +999,7 @@
         </div>
 
         <!-- 主体内容 -->
-        <div class="main-content">
+        <div class="main-content" id="main-content">
 
             <!-- 双栏服务 - 始终双栏布局 -->
             <div class="dual-section">
@@ -1080,109 +1216,533 @@
                 </div>
             </div>
 
-            <!-- 详情内容容器 -->
-            <div id="detail-container" style="display: none;">
-                <!-- 详情内容保持不变... -->
-                <!-- 1. PDM详情 -->
-                <div class="detail-section" id="detail-pdm">
-                    <div class="detail-header">
-                        <div class="detail-icon">📦</div>
-                        <div class="detail-title-group">
-                            <h2>SOLIDWORKS PDM 研发管理平台</h2>
-                            <p>有效并安全的管理您的数据</p>
-                        </div>
-                    </div>
-                    <div class="detail-content">
-                        <p>SOLIDWORKS Product Data Management (PDM) 是一个具有整套数据管理功能的解决方案，帮助您更好地管理小型工作组或大型企业中的信息。</p>
-                        <div class="highlight-box">
-                            <strong>核心价值：</strong>从本质上改进您的团队就产品开发进行管理和协作的方式，确保数据安全、版本可控、流程规范。
-                        </div>
-                        <h3>主要功能特点</h3>
-                        <ul class="feature-list">
-                            <li><strong>直观易用的操作界面：</strong>基于Windows资源管理器开发，用户上手没难度</li>
-                            <li><strong>数据储存架构：</strong>企业数据架构定制化，实现模板固化，支持异地协同</li>
-                            <li><strong>强大搜索引擎：</strong>多种搜索方式，快速得到想要的结果，支持全文检索</li>
-                            <li><strong>版本管理：</strong>修改、更新、审核、发布，数据可追溯，可退回</li>
-                            <li><strong>流程管理：</strong>从销售到交付，定制化的流程管理，电子化签审</li>
-                            <li><strong>项目管理模块：</strong>基于WBS架构实现任务指派到人，随时查看项目情况</li>
-                            <li><strong>权限控制：</strong>细粒度的权限管理，确保敏感数据仅对授权人员可见</li>
-                            <li><strong>CAD集成：</strong>与SOLIDWORKS CAD无缝集成，支持多CAD平台</li>
-                        </ul>
-                        <h3>应用场景</h3>
-                        <p>适用于机械设计、模具设计、非标自动化等行业，解决企业图纸管理混乱、版本混乱、查找困难、流程不规范等问题。</p>
-                    </div>
-                    <button class="back-btn" onclick="hideDetail()">
-                        <i class="fas fa-arrow-left"></i> 返回服务列表
-                    </button>
-                </div>
+        </div>
 
-                <!-- 2. MES详情 -->
-                <div class="detail-section" id="detail-mes">
-                    <div class="detail-header">
-                        <div class="detail-icon">🏭</div>
-                        <div class="detail-title-group">
-                            <h2>MES 生产执行管理系统</h2>
-                            <p>制造执行与车间数字化管理</p>
-                        </div>
-                    </div>
-                    <div class="detail-content">
-                        <p>Manufacturing Execution System (MES) 是制造执行系统，主要针对车间生产的管理和计划执行的一整套生产信息化管理系统。</p>
-                        <div class="highlight-box">
-                            <strong>核心价值：</strong>提供一个全面、安全、可靠的制造协同的MES解决方案，帮助企业大幅降低成本，提高运营效率。
-                        </div>
-                        <h3>MES能带来什么？</h3>
-                        <ul class="feature-list">
-                            <li><strong>改善生产成本：</strong>降低库存成本，增加库存周转率，妥善的制造计划，加快产品交期</li>
-                            <li><strong>降低生产错误：</strong>透过即时监控减少生产错误，监控制程差异、变化和趋势</li>
-                            <li><strong>更有效的供应链及制造管理：</strong>及时提供所有作业的资讯和报告，包括成本、品质和时间</li>
-                            <li><strong>提供准确的实际成本：</strong>即时分析并通知不符标准值，及时报工及下脚料管控</li>
-                            <li><strong>有效工时最大化：</strong>APS创建最佳工作排程，生产转换和快速调度</li>
-                            <li><strong>简化资讯转移：</strong>资讯整合、EDI资讯交换，打破信息孤岛</li>
-                            <li><strong>预测及诊断：</strong>工作现场的即时监控，包括耗时状况、可用性</li>
-                        </ul>
-                        <h3>功能模块</h3>
-                        <p>包含生产计划排程、工单管理、物料追溯、质量管理、设备管理、看板管理、报表分析等核心模块。支持与ERP、PDM系统无缝集成，实现从设计到制造的数据贯通。</p>
-                    </div>
-                    <button class="back-btn" onclick="hideDetail()">
-                        <i class="fas fa-arrow-left"></i> 返回服务列表
-                    </button>
+        <!-- 详情内容容器 -->
+        <div id="detail-container" class="detail-container">
+            <!-- 顶部固定导航栏 -->
+            <div class="detail-nav" id="detail-nav">
+                <div class="nav-back" onclick="hideDetail()">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>返回</span>
                 </div>
+                <div class="nav-title" id="nav-title">服务详情</div>
+                <div class="nav-placeholder"></div>
+            </div>
 
-                <!-- 其他详情内容保持不变，省略以节省空间... -->
-                <!-- 这里应该包含所有原有的detail-section内容 -->
-                
-                <!-- 简单示例：ERP详情 -->
-                <div class="detail-section" id="detail-erp">
-                    <div class="detail-header">
-                        <div class="detail-icon">📊</div>
-                        <div class="detail-title-group">
-                            <h2>ERP 企业资源规划</h2>
-                            <p>企业咨询管理与资源整合</p>
-                        </div>
+            <!-- 右侧悬浮返回按钮 -->
+            <div class="float-back-btn" id="float-back-btn" onclick="hideDetail()">
+                <i class="fas fa-arrow-up"></i>
+            </div>
+
+
+            <!-- 1. PDM详情 -->
+            <div class="detail-section" id="detail-pdm">
+                <div class="detail-header">
+                    <div class="detail-icon">📦</div>
+                    <div class="detail-title-group">
+                        <h2>SOLIDWORKS PDM 研发管理平台</h2>
+                        <p>有效并安全的管理您的数据</p>
                     </div>
-                    <div class="detail-content">
-                        <p>企业资源计划(ERP)是一种管理解决方案，集成了应用程序以帮助改善业务运营，沟通和协作。</p>
-                        <div class="highlight-box">
-                            <strong>核心价值：</strong>为您的企业提供一个自动化的业务管理解决方案，消除了数据孤岛。
-                        </div>
-                        <h3>核心功能</h3>
-                        <ul class="feature-list">
-                            <li><strong>财务管理：</strong>总账、应收应付、成本核算、资产管理</li>
-                            <li><strong>供应链管理：</strong>采购管理、销售管理、库存管理</li>
-                            <li><strong>生产管理：</strong>生产计划、物料需求计划(MRP)、车间控制</li>
-                            <li><strong>人力资源管理：</strong>人事管理、考勤薪资、绩效考核</li>
-                        </ul>
-                    </div>
-                    <button class="back-btn" onclick="hideDetail()">
-                        <i class="fas fa-arrow-left"></i> 返回服务列表
-                    </button>
                 </div>
+                <div class="detail-content">
+                    <p>SOLIDWORKS Product Data Management (PDM) 是一个具有整套数据管理功能的解决方案，帮助您更好地管理小型工作组或大型企业中的信息。</p>
+                    <div class="highlight-box">
+                        <strong>核心价值：</strong>从本质上改进您的团队就产品开发进行管理和协作的方式，确保数据安全、版本可控、流程规范。
+                    </div>
+                    <h3>主要功能特点</h3>
+                    <ul class="feature-list">
+                        <li><strong>直观易用的操作界面：</strong>基于Windows资源管理器开发，用户上手没难度</li>
+                        <li><strong>数据储存架构：</strong>企业数据架构定制化，实现模板固化，支持异地协同</li>
+                        <li><strong>强大搜索引擎：</strong>多种搜索方式，快速得到想要的结果，支持全文检索</li>
+                        <li><strong>版本管理：</strong>修改、更新、审核、发布，数据可追溯，可退回</li>
+                        <li><strong>流程管理：</strong>从销售到交付，定制化的流程管理，电子化签审</li>
+                        <li><strong>项目管理模块：</strong>基于WBS架构实现任务指派到人，随时查看项目情况</li>
+                        <li><strong>权限控制：</strong>细粒度的权限管理，确保敏感数据仅对授权人员可见</li>
+                        <li><strong>CAD集成：</strong>与SOLIDWORKS CAD无缝集成，支持多CAD平台</li>
+                    </ul>
+                    <h3>应用场景</h3>
+                    <p>适用于机械设计、模具设计、非标自动化等行业，解决企业图纸管理混乱、版本混乱、查找困难、流程不规范等问题。</p>
+                </div>
+                <button class="back-btn" onclick="hideDetail()">
+                    <i class="fas fa-arrow-left"></i> 返回服务列表
+                </button>
+            </div>
+
+            <!-- 2. MES详情 -->
+            <div class="detail-section" id="detail-mes">
+                <div class="detail-header">
+                    <div class="detail-icon">🏭</div>
+                    <div class="detail-title-group">
+                        <h2>MES 生产执行管理系统</h2>
+                        <p>制造执行与车间数字化管理</p>
+                    </div>
+                </div>
+                <div class="detail-content">
+                    <p>Manufacturing Execution System (MES) 是制造执行系统，主要针对车间生产的管理和计划执行的一整套生产信息化管理系统。</p>
+                    <div class="highlight-box">
+                        <strong>核心价值：</strong>提供一个全面、安全、可靠的制造协同的MES解决方案，帮助企业大幅降低成本，提高运营效率。
+                    </div>
+                    <h3>MES能带来什么？</h3>
+                    <ul class="feature-list">
+                        <li><strong>改善生产成本：</strong>降低库存成本，增加库存周转率，妥善的制造计划，加快产品交期</li>
+                        <li><strong>降低生产错误：</strong>透过即时监控减少生产错误，监控制程差异、变化和趋势</li>
+                        <li><strong>更有效的供应链及制造管理：</strong>及时提供所有作业的资讯和报告，包括成本、品质和时间</li>
+                        <li><strong>提供准确的实际成本：</strong>即时分析并通知不符标准值，及时报工及下脚料管控</li>
+                        <li><strong>有效工时最大化：</strong>APS创建最佳工作排程，生产转换和快速调度</li>
+                        <li><strong>简化资讯转移：</strong>资讯整合、EDI资讯交换，打破信息孤岛</li>
+                        <li><strong>预测及诊断：</strong>工作现场的即时监控，包括耗时状况、可用性</li>
+                    </ul>
+                    <h3>功能模块</h3>
+                    <p>包含生产计划排程、工单管理、物料追溯、质量管理、设备管理、看板管理、报表分析等核心模块。支持与ERP、PDM系统无缝集成，实现从设计到制造的数据贯通。</p>
+                </div>
+                <button class="back-btn" onclick="hideDetail()">
+                    <i class="fas fa-arrow-left"></i> 返回服务列表
+                </button>
+            </div>
+
+            <!-- 3. ERP详情 -->
+            <div class="detail-section" id="detail-erp">
+                <div class="detail-header">
+                    <div class="detail-icon">📊</div>
+                    <div class="detail-title-group">
+                        <h2>ERP 企业资源规划</h2>
+                        <p>企业咨询管理与资源整合</p>
+                    </div>
+                </div>
+                <div class="detail-content">
+                    <p>企业资源计划(ERP)是一种管理解决方案，集成了应用程序以帮助改善业务运营，沟通和协作。ERP系统简化了销售、订单处理、财务、人力资源、计划、生产、库存、采购等过程。</p>
+                    <div class="highlight-box">
+                        <strong>核心价值：</strong>为您的企业提供一个自动化的业务管理解决方案，消除了数据孤岛，简化从销售端到工厂运营的全流程。
+                    </div>
+                    <h3>核心功能</h3>
+                    <ul class="feature-list">
+                        <li><strong>财务管理：</strong>总账、应收应付、成本核算、资产管理，实现财务业务一体化</li>
+                        <li><strong>供应链管理：</strong>采购管理、销售管理、库存管理，优化供应链效率</li>
+                        <li><strong>生产管理：</strong>生产计划、物料需求计划(MRP)、车间控制，提高生产效率</li>
+                        <li><strong>人力资源管理：</strong>人事管理、考勤薪资、绩效考核，提升人力效能</li>
+                        <li><strong>客户关系管理：</strong>客户信息管理、销售机会跟踪、售后服务，提升客户满意度</li>
+                    </ul>
+                    <h3>独特优势</h3>
+                    <p>独特的<b>设计与执行概念</b>：系统在一个开发愿景中去构想、设计、执行，和支持。通过具有一致、直观界面的单一平台降低成本。实时生产与工序监控，ERP内置的MES实时监控功让决策者能够实时获知车间里正在发生的状况，也为可追溯性提供了一个追查工具。</p>
+                </div>
+                <button class="back-btn" onclick="hideDetail()">
+                    <i class="fas fa-arrow-left"></i> 返回服务列表
+                </button>
+            </div>
+
+            <!-- 4. 项目订单管理详情 -->
+            <div class="detail-section" id="detail-project">
+                <div class="detail-header">
+                    <div class="detail-icon">📋</div>
+                    <div class="detail-title-group">
+                        <h2>项目订单管理</h2>
+                        <p>全生命周期追踪</p>
+                    </div>
+                </div>
+                <div class="detail-content">
+                    <p>项目订单管理系统是针对制造型企业量身定制的全流程追踪解决方案，覆盖从客户询价、订单下达、设计生产到交付售后的完整生命周期。通过数字化手段实现订单透明化管理，确保按时交付、质量可控。</p>
+                    <div class="highlight-box">
+                        <strong>核心价值：</strong>实现订单全生命周期可视化追踪，消除信息断层，提升交付准时率和客户满意度。
+                    </div>
+                    <h3>功能模块</h3>
+                    <ul class="feature-list">
+                        <li><strong>订单录入与评审：</strong>支持多渠道订单接入，自动化订单评审流程，确保订单可行性</li>
+                        <li><strong>项目计划管理：</strong>基于WBS分解项目任务，甘特图展示进度，关键路径分析</li>
+                        <li><strong>资源分配：</strong>人力、设备、物料资源统筹调配，避免资源冲突</li>
+                        <li><strong>进度跟踪：</strong>实时跟踪设计、采购、生产、装配各阶段进度，延期预警</li>
+                        <li><strong>成本控制：</strong>项目预算编制、实际成本归集、成本偏差分析</li>
+                        <li><strong>交付管理：</strong>发货计划、物流跟踪、客户签收、安装调试记录</li>
+                        <li><strong>售后服务：</strong>质保期管理、维修记录、客户反馈跟踪</li>
+                    </ul>
+                    <h3>应用价值</h3>
+                    <p>通过项目订单管理系统，企业可以实现订单执行过程透明化，各部门协同效率提升40%以上；通过预警机制，项目延期率降低60%；通过成本归集，项目利润率分析精准度达到95%以上。</p>
+                </div>
+                <button class="back-btn" onclick="hideDetail()">
+                    <i class="fas fa-arrow-left"></i> 返回服务列表
+                </button>
+            </div>
+
+            <!-- 5. 智能报价系统详情 -->
+            <div class="detail-section" id="detail-quotation">
+                <div class="detail-header">
+                    <div class="detail-icon">💰</div>
+                    <div class="detail-title-group">
+                        <h2>智能报价系统</h2>
+                        <p>自动化成本核算</p>
+                    </div>
+                </div>
+                <div class="detail-content">
+                    <p>智能报价系统是基于产品设计数据和工艺路线的自动化成本核算与报价解决方案。系统与CAD/PDM无缝集成，自动提取BOM、工艺信息，结合材料价格库、工时库，实现快速、精准的成本计算和报价生成。</p>
+                    <div class="highlight-box">
+                        <strong>核心价值：</strong>将传统需要数天的报价周期缩短至数小时甚至数分钟，提高报价准确性，避免因估算失误导致的利润损失。
+                    </div>
+                    <h3>系统功能</h3>
+                    <ul class="feature-list">
+                        <li><strong>BOM自动提取：</strong>自动从SOLIDWORKS提取物料清单，识别标准件、外购件、自制件</li>
+                        <li><strong>材料成本计算：</strong>对接材料价格库，自动计算原材料成本，支持价格时效管理</li>
+                        <li><strong>工艺成本核算：</strong>基于工艺路线自动计算加工工时、设备折旧、人工成本</li>
+                        <li><strong>外协成本管理：</strong>外协工序价格库管理，自动累加外协费用</li>
+                        <li><strong>智能报价策略：</strong>支持成本加成法、市场导向法、客户等级差异化定价</li>
+                        <li><strong>报价单生成：</strong>自动生成专业报价单，支持多版本管理、审批流程</li>
+                        <li><strong>历史报价分析：</strong>报价成功率分析、竞争对手价格分析、利润率分析</li>
+                    </ul>
+                    <h3>效益分析</h3>
+                    <p>应用智能报价系统后，企业报价效率平均提升80%，报价准确率提升至95%以上；通过精准成本核算，避免因漏项导致的亏损订单；通过历史数据分析，优化定价策略，平均利润率提升3-5个百分点。</p>
+                </div>
+                <button class="back-btn" onclick="hideDetail()">
+                    <i class="fas fa-arrow-left"></i> 返回服务列表
+                </button>
+            </div>
+
+            <!-- 6. 工艺管理系统详情 -->
+            <div class="detail-section" id="detail-process">
+                <div class="detail-header">
+                    <div class="detail-icon">⚙️</div>
+                    <div class="detail-title-group">
+                        <h2>工艺管理系统</h2>
+                        <p>标准化工艺路线</p>
+                    </div>
+                </div>
+                <div class="detail-content">
+                    <p>工艺管理系统（CAPP）是连接设计与制造的桥梁，实现工艺路线标准化、工艺知识沉淀、工艺数据结构化。系统支持工艺BOM管理、工艺路线设计、工时定额、材料定额等核心功能，为生产计划和成本核算提供基础数据。</p>
+                    <div class="highlight-box">
+                        <strong>核心价值：</strong>建立企业工艺知识库，实现工艺标准化和复用，缩短工艺准备周期，提高工艺设计质量。
+                    </div>
+                    <h3>核心功能</h3>
+                    <ul class="feature-list">
+                        <li><strong>工艺BOM管理：</strong>设计BOM转工艺BOM，工艺合件、拆分件管理</li>
+                        <li><strong>工艺路线设计：</strong>可视化工艺路线编排，工序关联设备、工装、模具</li>
+                        <li><strong>标准工艺库：</strong>典型零件标准工艺路线库，支持工艺复用和快速派生</li>
+                        <li><strong>工时定额管理：</strong>基于工序的工时定额编制，支持经验公式法、实测法</li>
+                        <li><strong>工艺文件管理：</strong>工艺卡片、作业指导书、检验规程的编制与归档</li>
+                        <li><strong>材料定额：</strong>材料利用率计算、下料方案优化、材料消耗定额</li>
+                        <li><strong>工艺变更管理：</strong>工艺版本控制、变更影响分析、变更审批流程</li>
+                    </ul>
+                    <h3>应用效益</h3>
+                    <p>通过工艺管理系统，企业工艺准备周期平均缩短50%；工艺文件标准化程度提升至90%以上；通过标准工艺复用，新产品工艺设计效率提升70%；为MES系统提供准确的工艺路线数据，实现生产精准执行。</p>
+                </div>
+                <button class="back-btn" onclick="hideDetail()">
+                    <i class="fas fa-arrow-left"></i> 返回服务列表
+                </button>
+            </div>
+
+            <!-- 7. 无纸化系统详情 -->
+            <div class="detail-section" id="detail-paperless">
+                <div class="detail-header">
+                    <div class="detail-icon">📱</div>
+                    <div class="detail-title-group">
+                        <h2>无纸化系统</h2>
+                        <p>绿色智能制造</p>
+                    </div>
+                </div>
+                <div class="detail-content">
+                    <p>无纸化系统是实现绿色智能制造的关键环节，通过电子工单、电子图纸、电子签章、移动审批等技术手段，彻底消除生产制造过程中的纸质单据流转。系统与PDM、MES深度集成，确保现场操作人员随时获取最新版本的图纸和工艺文件。</p>
+                    <div class="highlight-box">
+                        <strong>核心价值：</strong>实现车间全流程无纸化，降低纸张消耗，提高信息传递效率，杜绝因图纸版本错误导致的质量事故。
+                    </div>
+                    <h3>系统组成</h3>
+                    <ul class="feature-list">
+                        <li><strong>电子图纸浏览：</strong>支持CAD图纸轻量化转换，车间终端、平板、手机随时查看</li>
+                        <li><strong>电子工单系统：</strong>工单无纸化下发，员工通过工位机查看任务、报工</li>
+                        <li><strong>电子签章：</strong>手写签名数字化，质检、工艺、生产签字全部电子化</li>
+                        <li><strong>工艺文件电子化：</strong>SOP、检验标准、工艺卡片电子化展示，支持多媒体播放</li>
+                        <li><strong>质量记录电子化：</strong>首检、巡检、完工检记录无纸化，数据自动采集</li>
+                        <li><strong>安灯呼叫：</strong>异常情况一键呼叫，消息即时推送相关人员</li>
+                        <li><strong>绿色办公：</strong>会议无纸化、审批无纸化、档案电子化</li>
+                    </ul>
+                    <h3>实施效益</h3>
+                    <p>实施无纸化系统后，企业纸张消耗降低90%以上；图纸下发效率提升80%，且确保100%最新版本；因图纸版本错误导致的废品率降低至0；符合ISO14001环境管理体系要求，提升企业绿色制造形象。</p>
+                </div>
+                <button class="back-btn" onclick="hideDetail()">
+                    <i class="fas fa-arrow-left"></i> 返回服务列表
+                </button>
+            </div>
+
+            <!-- 8. 质量管理系统详情 -->
+            <div class="detail-section" id="detail-quality">
+                <div class="detail-header">
+                    <div class="detail-icon">✅</div>
+                    <div class="detail-title-group">
+                        <h2>质量管理系统</h2>
+                        <p>全程质量追溯与控制</p>
+                    </div>
+                </div>
+                <div class="detail-content">
+                    <p>质量管理系统（QMS）覆盖产品全生命周期的质量管理活动，包括来料检验（IQC）、过程检验（IPQC）、成品检验（FQC）、出货检验（OQC）等环节。系统支持质量数据采集、SPC统计分析、不合格品处理、质量追溯等功能。</p>
+                    <div class="highlight-box">
+                        <strong>核心价值：</strong>建立全面质量管理体系，实现质量数据实时采集、异常自动预警、问题快速追溯，持续提升产品质量。
+                    </div>
+                    <h3>功能模块</h3>
+                    <ul class="feature-list">
+                        <li><strong>来料检验：</strong>来料报检、抽样检验、合格判定、供应商评价</li>
+                        <li><strong>过程检验：</strong>首检、巡检、工序检，检验标准数字化，拍照留档</li>
+                        <li><strong>成品检验：</strong>性能测试、外观检验、尺寸检验、包装检验</li>
+                        <li><strong>不合格品管理：</strong>不合格品标识、隔离、评审、处置流程</li>
+                        <li><strong>SPC分析：</strong>X-R图、P图、Cpk计算，过程能力分析，趋势预警</li>
+                        <li><strong>质量追溯：</strong>单件/批次追溯，正向追溯（原料-产品）、反向追溯（产品-原料）</li>
+                        <li><strong>质量成本：</strong>内部损失、外部损失、预防成本、鉴定成本统计分析</li>
+                        <li><strong>供应商质量：</strong>来料合格率统计、供应商分级管理、质量索赔</li>
+                    </ul>
+                    <h3>应用价值</h3>
+                    <p>通过质量管理系统，企业质量数据采集效率提升80%；质量异常响应时间从小时级缩短至分钟级；通过SPC预警，过程不良率降低50%；实现一键质量追溯，召回处理时间缩短90%；客户投诉率降低40%，质量成本降低20%。</p>
+                </div>
+                <button class="back-btn" onclick="hideDetail()">
+                    <i class="fas fa-arrow-left"></i> 返回服务列表
+                </button>
+            </div>
+
+            <!-- 9. PDM & Manage实施详情 -->
+            <div class="detail-section" id="detail-pdm-deploy">
+                <div class="detail-header">
+                    <div class="detail-icon orange">🔧</div>
+                    <div class="detail-title-group">
+                        <h2>PDM & Manage 系统实施与部署</h2>
+                        <p>原厂级专业技术支持</p>
+                    </div>
+                </div>
+                <div class="detail-content">
+                    <p>我们提供SOLIDWORKS PDM和Manage系统的全流程实施服务，从需求调研、方案设计、系统部署、数据迁移到上线培训，确保系统成功落地。实施团队持有SOLIDWORKS全球技术资格认证，具备丰富的制造业信息化实施经验。</p>
+                    <div class="highlight-box orange">
+                        <strong>服务优势：</strong>原厂级技术实力，深耕制造业二十年，具备丰富的行业最佳实践，确保系统不仅上线，更能真正用起来、用得好。
+                    </div>
+                    <h3 class="orange">实施服务内容</h3>
+                    <ul class="feature-list">
+                        <li><strong>需求调研：</strong>深入调研企业研发管理现状，识别痛点，制定针对性的PDM/Manage解决方案</li>
+                        <li><strong>方案设计：</strong>数据架构设计、流程设计、权限设计、编码规则设计、模板定制</li>
+                        <li><strong>系统部署：</strong>服务器环境搭建、PDM Vault部署、Manage系统配置、客户端部署</li>
+                        <li><strong>数据迁移：</strong>历史数据整理、批量导入、旧系统数据迁移、数据校验</li>
+                        <li><strong>系统集成：</strong>与CAD、ERP、MES系统的接口开发，实现数据贯通</li>
+                        <li><strong>定制开发：</strong>基于API的二次开发，满足企业个性化需求</li>
+                        <li><strong>培训辅导：</strong>管理员培训、关键用户培训、终端用户培训、操作手册编制</li>
+                        <li><strong>运维支持：</strong>上线后技术支持、系统优化、版本升级、问题处理</li>
+                    </ul>
+                    <h3 class="orange">Manage高级功能</h3>
+                    <p>SOLIDWORKS Manage是PDM的升级版，提供更强大的项目管理、物品管理、BOM管理功能。支持项目看板、任务分派、进度跟踪；支持物品全生命周期管理；支持EBOM、MBOM、SBOM等多BOM视图管理。</p>
+                </div>
+                <button class="back-btn" onclick="hideDetail()">
+                    <i class="fas fa-arrow-left"></i> 返回服务列表
+                </button>
+            </div>
+
+            <!-- 10. 仿真分析详情 -->
+            <div class="detail-section" id="detail-simulation">
+                <div class="detail-header">
+                    <div class="detail-icon orange">🔬</div>
+                    <div class="detail-title-group">
+                        <h2>仿真分析服务</h2>
+                        <p>主流CAE软件技术服务</p>
+                    </div>
+                </div>
+                <div class="detail-content">
+                    <p>我们提供全面的CAE仿真分析技术服务，涵盖结构仿真、流体仿真、模流分析、运动仿真等多个领域。通过仿真技术，在产品设计早期阶段验证产品性能，优化设计方案，减少物理样机，缩短研发周期，降低开发成本。</p>
+                    <div class="highlight-box orange">
+                        <strong>服务价值：</strong>通过仿真驱动设计，将问题发现在设计阶段，避免将问题带入生产，从而节省大量的修改成本和时间。
+                    </div>
+                    <h3 class="orange">仿真服务范围</h3>
+                    <ul class="feature-list">
+                        <li><strong>结构仿真（Simulation）：</strong>静应力分析、模态分析、疲劳分析、非线性分析、跌落测试、优化设计</li>
+                        <li><strong>流体仿真（Flow Simulation）：</strong>流体流场模拟、电子散热分析、热交换器设计、HVAC分析、外部流域分析</li>
+                        <li><strong>模流分析（Plastics）：</strong>注塑成型仿真、浇口位置优化、翘曲变形预测、冷却时间分析、气穴熔接痕预测</li>
+                        <li><strong>运动仿真（Motion）：</strong>机构运动分析、干涉检查、力/力矩计算、伺服电机选型、运动轨迹优化</li>
+                        <li><strong>高频电磁：</strong>天线设计、电磁兼容性(EMC)分析、高频电路板仿真</li>
+                    </ul>
+                    <h3 class="orange">技术能力</h3>
+                    <p>我们的仿真工程师具备丰富的行业经验，精通SOLIDWORKS Simulation、Flow Simulation、Plastics等软件，同时也掌握ANSYS、Abaqus等高端仿真工具。提供从模型简化、网格划分、边界条件设置到结果解读的全流程服务，并可生成专业的仿真分析报告。</p>
+                </div>
+                <button class="back-btn" onclick="hideDetail()">
+                    <i class="fas fa-arrow-left"></i> 返回服务列表
+                </button>
+            </div>
+
+            <!-- 11. DriveWorks详情 -->
+            <div class="detail-section" id="detail-driveworks">
+                <div class="detail-header">
+                    <div class="detail-icon orange">⚡</div>
+                    <div class="detail-title-group">
+                        <h2>模型参数化与DriveWorks</h2>
+                        <p>参数化驱动及自动出图</p>
+                    </div>
+                </div>
+                <div class="detail-content">
+                    <p>DriveWorks是一款与SOLIDWORKS紧密集成的设计自动化工具，通过捕捉设计规则、建立参数关系、配置设计界面，实现产品的快速变型设计。输入关键参数，系统自动生成新的三维模型、工程图、BOM表，甚至报价单。</p>
+                    <div class="highlight-box orange">
+                        <strong>核心价值：</strong>将重复性的设计工作自动化，效率提升数十倍甚至上百倍，同时消除人为错误，确保设计一致性。
+                    </div>
+                    <h3 class="orange">应用场景</h3>
+                    <ul class="feature-list">
+                        <li><strong>系列产品设计：</strong>标准产品的快速选型、变型设计，如减速机、泵阀、标准件等</li>
+                        <li><strong>非标自动化：</strong>基于标准模块快速组合出新的设计方案，自动计算尺寸、生成图纸</li>
+                        <li><strong>工程改型：</strong>根据现场测量数据，快速调整标准设计以适应具体工况</li>
+                        <li><strong>销售配置器：</strong>销售人员使用DriveWorks配置器，无需设计人员参与即可生成方案和报价</li>
+                    </ul>
+                    <h3 class="orange">实施内容</h3>
+                    <p>我们提供DriveWorks项目的全流程实施：设计规则梳理、参数化模型准备、规则逻辑编写、用户界面设计、数据集成（连接ERP数据库）、部署培训。支持从简单的参数驱动到复杂的产品配置器，甚至是网页版的销售配置器（DriveWorks Live）。</p>
+                </div>
+                <button class="back-btn" onclick="hideDetail()">
+                    <i class="fas fa-arrow-left"></i> 返回服务列表
+                </button>
+            </div>
+
+            <!-- 12. Composer详情 -->
+            <div class="detail-section" id="detail-composer">
+                <div class="detail-header">
+                    <div class="detail-icon orange">🎬</div>
+                    <div class="detail-title-group">
+                        <h2>SOLIDWORKS Composer</h2>
+                        <p>技术装配动画制作</p>
+                    </div>
+                </div>
+                <div class="detail-content">
+                    <p>SOLIDWORKS Composer是一款技术文档制作工具，可以直接利用现有的3D CAD数据，创建高质量的产品说明书、装配指导书、维修手册、培训材料。通过直观的3D动画和交互式内容，取代传统的纸质说明书，大幅提升信息传递效率。</p>
+                    <div class="highlight-box orange">
+                        <strong>应用价值：</strong>重用现有3D设计数据，为产品交付成果创建高质量图像资产，包括技术图解、制造装配说明、产品手册、培训指南、动画和交互式3D体验。
+                    </div>
+                    <h3 class="orange">核心功能</h3>
+                    <ul class="feature-list">
+                        <li><strong>技术图解：</strong>从3D模型自动生成爆炸视图、剖面视图、局部放大图，自动标注BOM序号</li>
+                        <li><strong>装配动画：</strong>制作装配顺序动画、拆卸动画、维修过程动画，支持路径动画和关键帧动画</li>
+                        <li><strong>交互式内容：</strong>创建可交互的3D说明书，用户可旋转、缩放、剖切模型，查看详细信息</li>
+                        <li><strong>内容更新：</strong>当CAD模型更新时，Composer文档自动更新，保持数据一致性</li>
+                        <li><strong>多格式输出：</strong>支持输出PDF、HTML、视频、SVG等多种格式</li>
+                    </ul>
+                    <h3 class="orange">应用场景</h3>
+                    <p>产品展示（展厅、展会、网站）、售后维修（远程指导、维修手册）、装配指导（车间作业指导书、工位培训）、投标演示（技术方案展示）、客户交付（电子版使用说明书）。通过Composer，企业可以减少90%的文档制作时间，同时提升文档质量。</p>
+                </div>
+                <button class="back-btn" onclick="hideDetail()">
+                    <i class="fas fa-arrow-left"></i> 返回服务列表
+                </button>
+            </div>
+
+            <!-- 13. Visualize详情 -->
+            <div class="detail-section" id="detail-visualize">
+                <div class="detail-header">
+                    <div class="detail-icon orange">🎨</div>
+                    <div class="detail-title-group">
+                        <h2>SOLIDWORKS Visualize</h2>
+                        <p>照片级渲染仿真</p>
+                    </div>
+                </div>
+                <div class="detail-content">
+                    <p>SOLIDWORKS Visualize是一款专业的3D渲染软件，可以快速将CAD数据转化为照片级的营销图像和动画。无需成为渲染专家，设计人员即可创建逼真的产品效果图，用于产品发布、营销材料、网站展示等，在产品实物制造出来之前就展示产品外观。</p>
+                    <div class="highlight-box orange">
+                        <strong>核心价值：</strong>在产品制造前创建高质量的营销内容，缩短上市时间，提前收集市场反馈，优化设计决策。
+                    </div>
+                    <h3 class="orange">功能特点</h3>
+                    <ul class="feature-list">
+                        <li><strong>照片级渲染：</strong>逼真的材质表现（金属、玻璃、塑料、织物等），真实的光照效果，环境反射</li>
+                        <li><strong>快速渲染：</strong>利用GPU加速，几分钟内即可生成高质量图像，支持实时预览</li>
+                        <li><strong>动画制作：</strong>产品旋转展示、 exploded view动画、相机漫游动画</li>
+                        <li><strong>虚拟摄影：</strong>景深效果、运动模糊、滤镜效果、多角度渲染</li>
+                        <li><strong>数据关联：</strong>与SOLIDWORKS实时关联，设计变更后渲染场景自动更新</li>
+                        <li><strong>360度全景：</strong>生成VR Ready的360度全景图，支持VR设备查看</li>
+                    </ul>
+                    <h3 class="orange">商业应用</h3>
+                    <p>产品发布前的预热营销、电商网站产品展示、投标方案展示、产品手册插图、社交媒体宣传、展会展板设计。通过Visualize，企业可以节省高昂的实物摄影成本，缩短营销准备周期，快速迭代设计方案。</p>
+                </div>
+                <button class="back-btn" onclick="hideDetail()">
+                    <i class="fas fa-arrow-left"></i> 返回服务列表
+                </button>
+            </div>
+
+            <!-- 14. 定制开发详情 -->
+            <div class="detail-section" id="detail-custom-dev">
+                <div class="detail-header">
+                    <div class="detail-icon orange">💻</div>
+                    <div class="detail-title-group">
+                        <h2>定制开发与系统集成</h2>
+                        <p>二次开发与多系统集成</p>
+                    </div>
+                </div>
+                <div class="detail-content">
+                    <p>我们提供基于SOLIDWORKS平台的专业定制开发服务，通过API接口开发各类自动化工具和插件，满足企业个性化需求。同时提供多系统集成服务，打通PDM、ERP、MES、CRM等系统间的数据壁垒，实现信息自动流转。</p>
+                    <div class="highlight-box orange">
+                        <strong>服务优势：</strong>资深开发团队，熟悉SOLIDWORKS API、PDM API、Manage API，具备丰富的ERP（SAP、金蝶、用友等）集成经验。
+                    </div>
+                    <h3 class="orange">开发服务内容</h3>
+                    <ul class="feature-list">
+                        <li><strong>CAD自动化：</strong>自动出图、批量转格式、BOM自动提取、标准件检查、设计规范检查</li>
+                        <li><strong>PDM二次开发：</strong>自定义流程、自动编码、属性映射、接口开发、报表开发</li>
+                        <li><strong>ERP集成：</strong>PDM与ERP的BOM同步、物料编码同步、工艺路线下发、库存查询</li>
+                        <li><strong>MES集成：</strong>工艺文件下发、无纸化集成、生产报工接口、质量数据回传</li>
+                        <li><strong>企业中间件：</strong>数据中台建设、主数据管理、多系统数据交换平台</li>
+                        <li><strong>移动端开发：</strong>移动审批APP、车间工位机界面、微信端应用集成</li>
+                    </ul>
+                    <h3 class="orange">典型案例</h3>
+                    <p>某装备制造企业：开发PDM与SAP集成接口，实现BOM自动同步，数据准确率提升至99.9%，人工录入工作量减少95%。<br><br>
+                    某电子企业：开发SOLIDWORKS自动出图插件，实现一键生成三视图、标注尺寸、生成BOM，出图效率提升80%。</p>
+                </div>
+                <button class="back-btn" onclick="hideDetail()">
+                    <i class="fas fa-arrow-left"></i> 返回服务列表
+                </button>
+            </div>
+
+            <!-- 15. 培训与辅导详情 -->
+            <div class="detail-section" id="detail-training">
+                <div class="detail-header">
+                    <div class="detail-icon orange">📚</div>
+                    <div class="detail-title-group">
+                        <h2>培训与辅导服务</h2>
+                        <p>软件应用培训与系统实施辅导</p>
+                    </div>
+                </div>
+                <div class="detail-content">
+                    <p>我们提供全方位的SOLIDWORKS技术培训和实施辅导服务，拥有资深的讲师团队，均持有SOLIDWORKS全球认证（CSWP/CSWI）。培训内容涵盖软件操作、高级功能、行业应用、定制开发等，支持线上、线下、驻场等多种培训模式。</p>
+                    <div class="highlight-box orange">
+                        <strong>培训理念：</strong>不仅教会软件操作，更传授设计方法论和最佳实践，帮助企业建立标准化的设计规范。
+                    </div>
+                    <h3 class="orange">培训课程体系</h3>
+                    <ul class="feature-list">
+                        <li><strong>基础应用培训：</strong>SOLIDWORKS基础建模、装配体、工程图，适合零基础学员</li>
+                        <li><strong>高级功能培训：</strong>曲面设计、钣金设计、焊件设计、模具设计、管道布线</li>
+                        <li><strong>专业模块培训：</strong>Simulation仿真、Electrical电气设计、PDM数据管理、Composer技术文档</li>
+                        <li><strong>认证考试辅导：</strong>CSWP（专业工程师）、CSWA（助理工程师）、CSWE（专家级）认证辅导</li>
+                        <li><strong>实施辅导：</strong>PDM上线辅导、标准化辅导、设计规范建立、模板定制</li>
+                        <li><strong>定制化培训：</strong>根据企业产品特点定制的专项培训，如某类设备的参数化设计方法</li>
+                    </ul>
+                    <h3 class="orange">培训方式</h3>
+                    <p>公开课（定期举办，随到随学）、企业内训（送教上门，定制内容）、在线培训（远程直播，灵活安排）、驻场辅导（长期驻场，手把手教）。培训后提供视频回放、操作手册、答疑服务，确保学员真正掌握。</p>
+                </div>
+                <button class="back-btn" onclick="hideDetail()">
+                    <i class="fas fa-arrow-left"></i> 返回服务列表
+                </button>
+            </div>
+
+            <!-- 16. 电气设计详情 -->
+            <div class="detail-section" id="detail-electrical">
+                <div class="detail-header">
+                    <div class="detail-icon orange">⚡</div>
+                    <div class="detail-title-group">
+                        <h2>SOLIDWORKS Electrical</h2>
+                        <p>机电一体化设计</p>
+                    </div>
+                </div>
+                <div class="detail-content">
+                    <p>SOLIDWORKS Electrical是专业的电气设计解决方案，包含2D原理图设计和3D电气布线设计。它实现了机械与电气设计的双向集成，电气设计师与机械设计师可以实时协作，确保机电设计的一致性和准确性。</p>
+                    <div class="highlight-box orange">
+                        <strong>核心价值：</strong>打通机械与电气设计流程，实现机电协同设计，减少设计错误，缩短机电产品上市时间。
+                    </div>
+                    <h3 class="orange">功能模块</h3>
+                    <ul class="feature-list">
+                        <li><strong>2D原理图设计：</strong>智能原理图绘制，自动编号，实时错误检查，符号库和制造商零件库管理</li>
+                        <li><strong>3D电气布线：</strong>在SOLIDWORKS 3D模型中自动布线，计算电线/电缆长度，检查线槽填充率</li>
+                        <li><strong>机电协同：</strong>电气设计与机械设计双向关联，任何变更自动同步，实时干涉检查</li>
+                        <li><strong>报表自动生成：</strong>自动统计电线清单、BOM表、端子排图、电缆清单</li>
+                        <li><strong>PLC集成：</strong>支持主流PLC品牌的I/O导入导出，自动分配PLC地址</li>
+                        <li><strong>ERP集成：</strong>电气BOM与ERP系统集成，确保采购数据准确</li>
+                    </ul>
+                    <h3 class="orange">适用行业</h3>
+                    <p>广泛应用于自动化设备、机床、电梯、电力设备、新能源、轨道交通等行业。通过SOLIDWORKS Electrical，企业可以将电气设计周期缩短50%，消除因机电不协调导致的返工，提升产品质量。</p>
+                </div>
+                <button class="back-btn" onclick="hideDetail()">
+                    <i class="fas fa-arrow-left"></i> 返回服务列表
+                </button>
             </div>
 
         </div>
 
         <!-- 底部CTA -->
-        <div class="footer">
+        <div class="footer" id="footer">
             <div class="cta-title">立即开启智能制造转型之旅</div>
             <div class="cta-subtitle">获取专属数字化诊断方案，让数据为您的企业创造价值</div>
             <div class="contact-grid">
@@ -1213,40 +1773,91 @@
                         <div class="contact-value">alws88@126.com</div>
                     </div>
                 </a>
-                <a class="contact-card" href="https://map.baidu.com/search/厦门火炬高新区软件园三期诚毅北大街51号202单元" target="_blank">
+                <div class="contact-card" onclick="openNavigation()">
                     <div class="contact-icon address">
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
                     <div class="contact-info">
-                        <div class="contact-label">公司地址</div>
+                        <div class="contact-label">公司地址（点击导航）</div>
                         <div class="contact-value">厦门软件园三期</div>
                     </div>
-                </a>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
+        // 服务名称映射
+        const serviceNames = {
+            'pdm': 'SOLIDWORKS PDM',
+            'mes': 'MES生产执行系统',
+            'erp': 'ERP企业资源规划',
+            'project': '项目订单管理',
+            'quotation': '智能报价系统',
+            'process': '工艺管理系统',
+            'paperless': '无纸化系统',
+            'quality': '质量管理系统',
+            'pdm-deploy': 'PDM&Manage实施',
+            'simulation': '仿真分析服务',
+            'driveworks': 'DriveWorks参数化',
+            'composer': 'Composer动画制作',
+            'visualize': 'Visualize渲染仿真',
+            'custom-dev': '定制开发服务',
+            'training': '培训与辅导',
+            'electrical': '电气设计服务'
+        };
+
+        // 显示详情
         function showDetail(id) {
+            // 隐藏主内容
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('footer').style.display = 'none';
+
+            // 显示详情容器
+            const container = document.getElementById('detail-container');
+            container.classList.add('active');
+
+            // 显示顶部导航栏
+            document.getElementById('detail-nav').classList.add('active');
+
+            // 显示悬浮返回按钮
+            document.getElementById('float-back-btn').classList.add('active');
+
+            // 更新导航栏标题
+            const title = serviceNames[id] || '服务详情';
+            document.getElementById('nav-title').textContent = title;
+
+            // 隐藏所有详情
             const allDetails = document.querySelectorAll('.detail-section');
             allDetails.forEach(detail => {
                 detail.classList.remove('active');
             });
 
-            const container = document.getElementById('detail-container');
-            container.style.display = 'block';
-
+            // 显示目标详情
             const targetDetail = document.getElementById('detail-' + id);
             if (targetDetail) {
                 targetDetail.classList.add('active');
-                targetDetail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         }
 
+        // 隐藏详情返回主页
         function hideDetail() {
-            const container = document.getElementById('detail-container');
-            container.style.display = 'none';
+            // 显示主内容
+            document.getElementById('main-content').style.display = 'block';
+            document.getElementById('footer').style.display = 'block';
 
+            // 隐藏详情容器
+            const container = document.getElementById('detail-container');
+            container.classList.remove('active');
+
+            // 隐藏顶部导航栏
+            document.getElementById('detail-nav').classList.remove('active');
+
+            // 隐藏悬浮返回按钮
+            document.getElementById('float-back-btn').classList.remove('active');
+
+            // 隐藏所有详情
             const allDetails = document.querySelectorAll('.detail-section');
             allDetails.forEach(detail => {
                 detail.classList.remove('active');
@@ -1255,6 +1866,75 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        // 监听滚动，控制悬浮按钮显示/隐藏（可选优化）
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            const floatBtn = document.getElementById('float-back-btn');
+            if (!floatBtn.classList.contains('active')) return;
+
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            // 如果滚动超过300px才显示悬浮按钮，否则隐藏
+            if (scrollTop > 300) {
+                floatBtn.style.opacity = '1';
+                floatBtn.style.visibility = 'visible';
+            } else {
+                floatBtn.style.opacity = '0';
+                floatBtn.style.visibility = 'hidden';
+            }
+
+            lastScrollTop = scrollTop;
+        });
+
+        // 打开地图导航
+        function openNavigation() {
+            var address = "厦门火炬高新区软件园三期诚毅北大街51号";
+            var company = "厦门奥维思信息科技有限公司";
+            // 坐标（厦门软件园三期附近）
+            var lat = "24.5926";
+            var lng = "118.0540";
+
+            // 检测是否是微信环境
+            var isWeixin = /MicroMessenger/i.test(navigator.userAgent);
+            var isAndroid = /Android/i.test(navigator.userAgent);
+            var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+            if (isWeixin) {
+                // 微信内优先使用腾讯地图（微信内置地图）
+                // 使用腾讯地图URI API，不需要Key的简化版
+                var qqMapUrl = "https://map.qq.com/?type=marker&isopeninfowin=1&markertype=1&pointx=" + lng + "&pointy=" + lat + "&name=" + encodeURIComponent(company) + "&addr=" + encodeURIComponent(address);
+
+                // 尝试打开腾讯地图APP或内置地图
+                window.location.href = qqMapUrl;
+
+                // 如果2秒后还没跳转（可能没装腾讯地图），则给出提示
+                setTimeout(function() {
+                    if (confirm('是否打开百度地图查看位置？')) {
+                        window.location.href = "https://map.baidu.com/search/" + encodeURIComponent(address);
+                    }
+                }, 2000);
+            } else {
+                // 非微信环境，尝试调起百度地图APP
+                if (isAndroid) {
+                    // Android使用百度地图APP Scheme
+                    window.location.href = "bdapp://map/marker?location=" + lat + "," + lng + "&title=" + encodeURIComponent(company) + "&content=" + encodeURIComponent(address) + "&traffic=on";
+                } else if (isIOS) {
+                    // iOS使用百度地图APP Scheme
+                    window.location.href = "baidumap://map/marker?location=" + lat + "," + lng + "&title=" + encodeURIComponent(company) + "&content=" + encodeURIComponent(address) + "&traffic=on";
+                } else {
+                    // 其他设备使用Web版
+                    window.open("https://map.baidu.com/search/" + encodeURIComponent(address), "_blank");
+                    return;
+                }
+
+                // 如果2秒后还没跳转（可能没装百度地图APP），则打开Web版
+                setTimeout(function() {
+                    window.location.href = "https://map.baidu.com/search/" + encodeURIComponent(address);
+                }, 2000);
+            }
+        }
+
+        // 复制微信号到剪贴板
         function copyWechat() {
             const wechatId = document.getElementById('wechat-id').innerText;
             const input = document.createElement('input');
