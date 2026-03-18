@@ -1886,51 +1886,40 @@
             lastScrollTop = scrollTop;
         });
 
-        // 打开地图导航
+        // 打开地图导航 - 参考之前版本修复
         function openNavigation() {
-            var address = "厦门火炬高新区软件园三期诚毅北大街51号";
-            var company = "厦门奥维思信息科技有限公司";
-            // 坐标（厦门软件园三期附近）
-            var lat = "24.5926";
-            var lng = "118.0540";
+            const address = "厦门火炬高新区软件园三期诚毅北大街51号2层";
+            const company = "厦门奥维思信息科技有限公司";
+            const encodedAddress = encodeURIComponent(address);
 
-            // 检测是否是微信环境
-            var isWeixin = /MicroMessenger/i.test(navigator.userAgent);
-            var isAndroid = /Android/i.test(navigator.userAgent);
-            var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+            // 检测是否为微信环境
+            const isWechat = /MicroMessenger/i.test(navigator.userAgent);
+            const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+            const isAndroid = /Android/i.test(navigator.userAgent);
 
-            if (isWeixin) {
-                // 微信内优先使用腾讯地图（微信内置地图）
-                // 使用腾讯地图URI API，不需要Key的简化版
-                var qqMapUrl = "https://map.qq.com/?type=marker&isopeninfowin=1&markertype=1&pointx=" + lng + "&pointy=" + lat + "&name=" + encodeURIComponent(company) + "&addr=" + encodeURIComponent(address);
+            if (isWechat) {
+                // 微信内置浏览器：使用腾讯地图搜索API（微信内置支持最好）
+                const tencentMapUrl = `https://apis.map.qq.com/uri/v1/search?keyword=${encodedAddress}&region=厦门`;
+                window.location.href = tencentMapUrl;
+            } else if (isIOS) {
+                // iOS：尝试高德地图App
+                window.location.href = `iosamap://search?keyword=${encodedAddress}&city=厦门`;
 
-                // 尝试打开腾讯地图APP或内置地图
-                window.location.href = qqMapUrl;
+                // 如果没有安装App，3秒后跳转到Web版
+                setTimeout(() => {
+                    window.location.href = `https://ditu.amap.com/search?keyword=${encodedAddress}`;
+                }, 3000);
+            } else if (isAndroid) {
+                // Android：尝试高德地图App
+                window.location.href = `amapuri://search?keyword=${encodedAddress}&city=厦门`;
 
-                // 如果2秒后还没跳转（可能没装腾讯地图），则给出提示
-                setTimeout(function() {
-                    if (confirm('是否打开百度地图查看位置？')) {
-                        window.location.href = "https://map.baidu.com/search/" + encodeURIComponent(address);
-                    }
-                }, 2000);
+                // 如果没有安装App，3秒后跳转到Web版
+                setTimeout(() => {
+                    window.location.href = `https://ditu.amap.com/search?keyword=${encodedAddress}`;
+                }, 3000);
             } else {
-                // 非微信环境，尝试调起百度地图APP
-                if (isAndroid) {
-                    // Android使用百度地图APP Scheme
-                    window.location.href = "bdapp://map/marker?location=" + lat + "," + lng + "&title=" + encodeURIComponent(company) + "&content=" + encodeURIComponent(address) + "&traffic=on";
-                } else if (isIOS) {
-                    // iOS使用百度地图APP Scheme
-                    window.location.href = "baidumap://map/marker?location=" + lat + "," + lng + "&title=" + encodeURIComponent(company) + "&content=" + encodeURIComponent(address) + "&traffic=on";
-                } else {
-                    // 其他设备使用Web版
-                    window.open("https://map.baidu.com/search/" + encodeURIComponent(address), "_blank");
-                    return;
-                }
-
-                // 如果2秒后还没跳转（可能没装百度地图APP），则打开Web版
-                setTimeout(function() {
-                    window.location.href = "https://map.baidu.com/search/" + encodeURIComponent(address);
-                }, 2000);
+                // 其他设备使用高德地图Web版
+                window.open(`https://ditu.amap.com/search?keyword=${encodedAddress}`, '_blank');
             }
         }
 
