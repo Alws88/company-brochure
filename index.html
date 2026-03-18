@@ -1,0 +1,992 @@
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=yes, email=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>公司宣传彩页 - 智能制造全流程解决方案</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+            min-height: 100vh;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .brochure {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 顶部装饰条 */
+        .top-bar {
+            height: 6px;
+            background: linear-gradient(90deg, #0066CC 0%, #00A8E8 50%, #FF6B35 100%);
+        }
+
+        /* 头部区域 - 手机端优化 */
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .company-name {
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0.9;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .main-title {
+            font-size: 26px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            line-height: 1.3;
+            background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 15px;
+            font-weight: 300;
+            opacity: 0.95;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .tagline {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 13px;
+        }
+
+        .tag-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.1);
+            padding: 8px 12px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            width: fit-content;
+        }
+
+        .tag-icon {
+            font-size: 16px;
+        }
+
+        /* 主体内容区 */
+        .main-content {
+            padding: 25px 15px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding-left: 5px;
+        }
+
+        .section-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #0066CC, #00A8E8);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+        }
+
+        /* 双栏服务 - 手机端改为单栏优化 */
+        .dual-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid rgba(0,102,204,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .service-card:active {
+            transform: scale(0.98);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #0066CC, #00A8E8);
+        }
+
+        .service-card.orange-card::before {
+            background: linear-gradient(180deg, #FF6B35, #f7931e);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .card-icon.blue {
+            background: linear-gradient(135deg, #0066CC, #00A8E8);
+            color: white;
+            box-shadow: 0 4px 12px rgba(0,102,204,0.3);
+        }
+
+        .card-icon.orange {
+            background: linear-gradient(135deg, #FF6B35, #f7931e);
+            color: white;
+            box-shadow: 0 4px 12px rgba(255,107,53,0.3);
+        }
+
+        .card-title-group {
+            flex: 1;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+
+        .card-subtitle {
+            font-size: 12px;
+            color: #718096;
+        }
+
+        .service-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+
+        .service-item {
+            padding: 8px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 14px;
+            color: #2d3748;
+            line-height: 1.4;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .service-item:last-child {
+            border-bottom: none;
+        }
+
+        .bullet {
+            width: 6px;
+            height: 6px;
+            background: #0066CC;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 6px;
+        }
+
+        .service-card.orange-card .bullet {
+            background: #FF6B35;
+        }
+
+        /* 流程图区域 - 手机端垂直优化 */
+        .process-section {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            border-radius: 20px;
+            padding: 25px 20px;
+            color: white;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .process-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .process-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 0;
+            position: relative;
+        }
+
+        .process-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 60px;
+            width: 2px;
+            height: 24px;
+            background: rgba(255,255,255,0.3);
+        }
+
+        .step-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .step-desc {
+            font-size: 13px;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        /* 核心优势 - 手机端双栏 */
+        .advantages {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .adv-item {
+            text-align: center;
+            padding: 20px 10px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .adv-item:active {
+            transform: scale(0.95);
+        }
+
+        .adv-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #f0f7ff 0%, #e0f0ff 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(0,102,204,0.1);
+        }
+
+        .adv-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 6px;
+        }
+
+        .adv-desc {
+            font-size: 11px;
+            color: #718096;
+            line-height: 1.4;
+        }
+
+        /* 底部CTA */
+        .footer {
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: white;
+            padding: 35px 20px;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .cta-subtitle {
+            font-size: 14px;
+            opacity: 0.85;
+            margin-bottom: 25px;
+            line-height: 1.5;
+            padding: 0 10px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15px;
+            background: rgba(255,255,255,0.08);
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-decoration: none;
+            color: white;
+            transition: all 0.2s;
+            text-align: left;
+        }
+
+        .contact-item:active {
+            background: rgba(255,255,255,0.15);
+            transform: scale(0.98);
+        }
+
+        .contact-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 18px;
+        }
+
+        .contact-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .contact-label {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        .contact-value {
+            font-size: 15px;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        .wechat-icon {
+            color: #07C160;
+        }
+
+        /* 平板/电脑端适配 */
+        @media (min-width: 768px) {
+            body {
+                padding: 20px;
+            }
+            
+            .brochure {
+                border-radius: 20px;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            }
+            
+            .header {
+                padding: 60px 50px;
+            }
+            
+            .main-title {
+                font-size: 48px;
+            }
+            
+            .subtitle {
+                font-size: 22px;
+            }
+            
+            .tagline {
+                flex-direction: row;
+                gap: 15px;
+            }
+            
+            .main-content {
+                padding: 50px;
+            }
+            
+            .dual-section {
+                flex-direction: row;
+                gap: 30px;
+            }
+            
+            .service-card {
+                flex: 1;
+                padding: 30px;
+            }
+            
+            .card-title {
+                font-size: 22px;
+            }
+            
+            .service-list {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .service-item {
+                font-size: 15px;
+                padding: 10px 0;
+            }
+            
+            .process-section {
+                padding: 40px;
+            }
+            
+            .process-flow {
+                flex-direction: row;
+                justify-content: space-between;
+                gap: 20px;
+            }
+            
+            .process-step {
+                flex-direction: column;
+                text-align: center;
+                flex: 1;
+                padding: 0;
+            }
+            
+            .process-step:not(:last-child)::after {
+                display: none;
+            }
+            
+            .step-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 32px;
+                margin-bottom: 15px;
+            }
+            
+            .step-title {
+                font-size: 18px;
+                margin-bottom: 8px;
+            }
+            
+            .step-desc {
+                font-size: 14px;
+            }
+            
+            .advantages {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+            }
+            
+            .adv-item {
+                padding: 30px 20px;
+            }
+            
+            .footer {
+                padding: 50px 40px;
+            }
+            
+            .cta-title {
+                font-size: 32px;
+            }
+            
+            .contact-info {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                max-width: 800px;
+            }
+            
+            .contact-item {
+                width: calc(50% - 6px);
+                max-width: 380px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .header {
+                padding: 80px;
+            }
+            
+            .main-content {
+                padding: 60px 80px;
+            }
+            
+            .main-title {
+                font-size: 56px;
+            }
+            
+            .contact-item {
+                width: calc(50% - 10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="brochure">
+        <div class="top-bar"></div>
+
+        <!-- 头部 -->
+        <div class="header">
+            <div class="header-content">
+                <div class="company-name">[厦门奥维思信息科技有限公司]</div>
+                <h1 class="main-title">智能制造全流程<br>解决方案专家</h1>
+                <div class="subtitle">让制造更聪明 · 让数据会思考</div>
+                <div class="tagline">
+                    <div class="tag-item">
+                        <span class="tag-icon">🏭</span>
+                        <span>专注制造型企业数字化转型</span>
+                    </div>
+                    <div class="tag-item">
+                        <span class="tag-icon">⚡</span>
+                        <span>端到端数字化解决方案</span>
+                    </div>
+                    <div class="tag-item">
+                        <span class="tag-icon">🎯</span>
+                        <span>SOLIDWORKS原厂级技术支持</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 主体内容 -->
+        <div class="main-content">
+            <!-- 双栏服务 -->
+            <div class="dual-section">
+                <div class="service-card">
+                    <div class="card-header">
+                        <div class="card-icon blue">🔄</div>
+                        <div class="card-title-group">
+                            <div class="card-title">智能制造全流程系统搭建</div>
+                            <div class="card-subtitle">端到端数字化解决方案</div>
+                        </div>
+                    </div>
+                    <ul class="service-list">
+                        <li class="service-item">
+                            <span class="bullet"></span>
+                            <span><strong>SOLIDWORKS PDM</strong> 研发数据管理平台</span>
+                        </li>
+                        <li class="service-item">
+                            <span class="bullet"></span>
+                            <span><strong>MES系统</strong> 生产执行与车间管理</span>
+                        </li>
+                        <li class="service-item">
+                            <span class="bullet"></span>
+                            <span><strong>ERP系统</strong> 企业资源规划集成</span>
+                        </li>
+                        <li class="service-item">
+                            <span class="bullet"></span>
+                            <span><strong>项目订单管理</strong> 全生命周期追踪</span>
+                        </li>
+                        <li class="service-item">
+                            <span class="bullet"></span>
+                            <span><strong>智能报价系统</strong> 自动化成本核算</span>
+                        </li>
+                        <li class="service-item">
+                            <span class="bullet"></span>
+                            <span><strong>工艺管理系统</strong> 标准化工艺路线</span>
+                        </li>
+                        <li class="service-item">
+                            <span class="bullet"></span>
+                            <span><strong>无纸化系统</strong> 绿色智能制造</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="service-card orange-card">
+                    <div class="card-header">
+                        <div class="card-icon orange">🛠️</div>
+                        <div class="card-title-group">
+                            <div class="card-title">SOLIDWORKS技术服务</div>
+                            <div class="card-subtitle">原厂级专业技术支持</div>
+                        </div>
+                    </div>
+                    <ul class="service-list">
+                        <li class="service-item">
+                            <span class="bullet"></span>
+                            <span><strong>PDM & Manage</strong> 系统实施与部署</span>
+                        </li>
+                        <li class="service-item">
+                            <span class="bullet"></span>
+                            <span><strong>仿真分析</strong> 主流CAE软件技术服务</span>
+                        </li>
+                        <li class="service-item">
+                            <span class="bullet"></span>
+                            <span><strong>模型参数化</strong> DriveWorks参数化驱动及自动出图</span>
+                        </li>
+                        <li class="service-item">
+                            <span class="bullet"></span>
+                            <span><strong>Composer软件应用</strong> 技术装配动画制作</span>
+                        </li>
+                        <li class="service-item">
+                            <span class="bullet"></span>
+                            <span><strong>Visualize软件应用</strong> 照片级渲染仿真</span>
+                        </li>
+                        <li class="service-item">
+                            <span class="bullet"></span>
+                            <span><strong>定制开发</strong> 二次开发与多系统集成</span>
+                        </li>
+                        <li class="service-item">
+                            <span class="bullet"></span>
+                            <span><strong>培训与辅导</strong> 软件应用培训与系统实施辅导</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 全流程图示 -->
+            <div class="process-section">
+                <div class="process-title">
+                    <span>🏭</span>
+                    <span>智能制造全流程覆盖</span>
+                </div>
+                <div class="process-flow">
+                    <div class="process-step">
+                        <div class="step-icon">💡</div>
+                        <div class="step-content">
+                            <div class="step-title">研发设计</div>
+                            <div class="step-desc">PDM研发数据管理<br>3D参数化设计</div>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-icon">📋</div>
+                        <div class="step-content">
+                            <div class="step-title">工艺规划</div>
+                            <div class="step-desc">CAPP工艺系统<br>智能报价系统</div>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-icon">🏭</div>
+                        <div class="step-content">
+                            <div class="step-title">生产制造</div>
+                            <div class="step-desc">MES生产执行<br>无纸化车间</div>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-icon">📊</div>
+                        <div class="step-content">
+                            <div class="step-title">运营管理</div>
+                            <div class="step-desc">ERP资源整合<br>订单项目追踪</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 核心优势 -->
+            <div class="section-title">
+                <div class="section-icon">⭐</div>
+                为什么选择我们
+            </div>
+            <div class="advantages">
+                <div class="adv-item">
+                    <div class="adv-icon">🔧</div>
+                    <div class="adv-title">端到端覆盖</div>
+                    <div class="adv-desc">从研发到生产<br>打破信息孤岛</div>
+                </div>
+                <div class="adv-item">
+                    <div class="adv-icon">🏆</div>
+                    <div class="adv-title">原厂级技术</div>
+                    <div class="adv-desc">SOLIDWORKS<br>专业实施团队</div>
+                </div>
+                <div class="adv-item">
+                    <div class="adv-icon">🎯</div>
+                    <div class="adv-title">行业深耕</div>
+                    <div class="adv-desc">专注制造型企业<br>数字化转型</div>
+                </div>
+                <div class="adv-item">
+                    <div class="adv-icon">🤝</div>
+                    <div class="adv-title">落地保障</div>
+                    <div class="adv-desc">实施+培训+运维<br>全周期服务</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部CTA -->
+        <div class="footer">
+            <div class="cta-title">立即开启智能制造转型之旅</div>
+            <div class="cta-subtitle">获取专属数字化诊断方案，让数据为您的企业创造价值</div>
+            <div class="contact-info">
+                <a class="contact-item" href="tel:13860316431">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-text">
+                        <div class="contact-label">电话咨询</div>
+                        <div class="contact-value">13860316431</div>
+                    </div>
+                </a>
+                
+                <div class="contact-item" onclick="copyWechat()">
+                    <div class="contact-icon">
+                        <i class="fa-brands fa-weixin wechat-icon"></i>
+                    </div>
+                    <div class="contact-text">
+                        <div class="contact-label">微信咨询（点击复制）</div>
+                        <div class="contact-value">CWD221015</div>
+                    </div>
+                </div>
+                
+                <a class="contact-item" href="mailto:alws88@126.com">
+                    <div class="contact-icon">📧</div>
+                    <div class="contact-text">
+                        <div class="contact-label">邮件联系</div>
+                        <div class="contact-value">alws88@126.com</div>
+                    </div>
+                </a>
+                
+                <div class="contact-item" onclick="openMap()">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-text">
+                        <div class="contact-label">公司地址（点击导航）</div>
+                        <div class="contact-value">厦门火炬高新区软件园三期诚毅北大街51号</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 复制微信号
+        function copyWechat() {
+            const wechat = 'CWD221015';
+            
+            // 现代浏览器复制方法
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(wechat).then(() => {
+                    showToast('微信号已复制：' + wechat);
+                }).catch(() => {
+                    fallbackCopy(wechat);
+                });
+            } else {
+                fallbackCopy(wechat);
+            }
+        }
+        
+        // 兼容旧浏览器的复制方法
+        function fallbackCopy(text) {
+            const input = document.createElement('input');
+            input.value = text;
+            input.style.position = 'fixed';
+            input.style.left = '-9999px';
+            document.body.appendChild(input);
+            input.focus();
+            input.select();
+            
+            try {
+                document.execCommand('copy');
+                showToast('微信号已复制：' + text);
+            } catch (err) {
+                showToast('复制失败，请手动复制：' + text);
+            }
+            document.body.removeChild(input);
+        }
+
+        // 打开地图导航 - 修复版
+        function openMap() {
+            const address = '厦门火炬高新区软件园三期诚毅北大街51号';
+            const encodedAddress = encodeURIComponent(address);
+            
+            // 检测是否为微信环境
+            const isWechat = /MicroMessenger/i.test(navigator.userAgent);
+            const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+            const isAndroid = /Android/i.test(navigator.userAgent);
+            
+            if (isWechat) {
+                // 微信内置浏览器：使用腾讯地图（微信内置支持最好）
+                // 先尝试使用微信JS-SDK（如果配置了的话），否则使用腾讯地图Web版
+                const tencentMapUrl = `https://apis.map.qq.com/uri/v1/search?keyword=${encodedAddress}&region=厦门`;
+                window.location.href = tencentMapUrl;
+            } else if (isIOS) {
+                // iOS：尝试高德地图App，如果没有则使用Apple Maps
+                // 使用Universal Link格式
+                window.location.href = `iosamap://search?keyword=${encodedAddress}&city=厦门`;
+                
+                // 如果没有安装App，3秒后跳转到Web版
+                setTimeout(() => {
+                    window.location.href = `https://ditu.amap.com/search?keyword=${encodedAddress}`;
+                }, 3000);
+            } else if (isAndroid) {
+                // Android：尝试高德地图App
+                window.location.href = `amapuri://search?keyword=${encodedAddress}&city=厦门`;
+                
+                // 如果没有安装App，3秒后跳转到Web版
+                setTimeout(() => {
+                    window.location.href = `https://ditu.amap.com/search?keyword=${encodedAddress}`;
+                }, 3000);
+            } else {
+                // 其他设备使用高德地图Web版
+                window.open(`https://ditu.amap.com/search?keyword=${encodedAddress}`, '_blank');
+            }
+        }
+
+        // 微信风格提示框
+        function showToast(text) {
+            // 移除已有的toast
+            const existingToast = document.querySelector('.toast-message');
+            if (existingToast) {
+                existingToast.remove();
+            }
+            
+            const toast = document.createElement('div');
+            toast.className = 'toast-message';
+            toast.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0,0,0,0.8);
+                color: white;
+                padding: 14px 24px;
+                border-radius: 8px;
+                font-size: 14px;
+                z-index: 9999;
+                pointer-events: none;
+                white-space: nowrap;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            `;
+            toast.textContent = text;
+            document.body.appendChild(toast);
+            
+            // 动画进入
+            toast.animate([
+                { opacity: 0, transform: 'translate(-50%, -50%) scale(0.9)' },
+                { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' }
+            ], {
+                duration: 200,
+                easing: 'ease-out',
+                fill: 'forwards'
+            });
+            
+            // 2秒后消失
+            setTimeout(() => {
+                toast.animate([
+                    { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
+                    { opacity: 0, transform: 'translate(-50%, -50%) scale(0.9)' }
+                ], {
+                    duration: 200,
+                    easing: 'ease-in',
+                    fill: 'forwards'
+                }).onfinish = () => {
+                    toast.remove();
+                };
+            }, 2000);
+        }
+
+        // 禁止微信端缩放
+        document.addEventListener('touchstart', function(e) {
+            if (e.touches.length > 1) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(e) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                e.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>'''
